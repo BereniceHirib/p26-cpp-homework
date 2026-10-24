@@ -1,1 +1,1 @@
-# p26-cpp-homework
+Exercices et devoirs cours info C++
