@@ -1,1 +1,1 @@
-Exercices et devoirs cours d'info C++
+Exercices et devoirs cours info C++
