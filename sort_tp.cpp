@@ -20,16 +20,16 @@ void bubble_sort(int tab[], int n)
     // 2) faites cette opération jusqu'à ce que le tableau soit trié
     // 3) éviter de faire du travail en trop
     for (int i=0 ; i<n ; i++){
-        for (int j=0 ; j<n-i ; j++){
+        for (int j=0 ; j<n-1-i ; j++){
             // vr:----------
             // vr: à l'étape i=1 tu sais que l'élément n-1 est déjà le plus grand : donc inutile de re-tester n-1
             // vr:   (généralise avec i)
-            if (tab[i]<tab[j]){
+            if (tab[j+1]<tab[j]){
                 // vr:----------
                 // vr: pas besoin de 2 variables intermédiaires : une seule suffit
                 int b=tab[j];
-                tab[j]=tab[i];
-                tab[i]=b; // vr: second ; inutile
+                tab[j]=tab[j+1];
+                tab[j+1]=b; // vr: second ; inutile
             }
         }
     }
@@ -96,7 +96,7 @@ int main()
 
     // call your sort here:
     // bubble_sort(tab, n);  // vr: je commente
-    insertiom_sort(tab, n);
+    bubble_sort(tab, n);
 
     std::cout << "after" << std::endl;
     print(tab, n);
