@@ -20,17 +20,16 @@ void bubble_sort(int tab[], int n)
     // 2) faites cette opération jusqu'à ce que le tableau soit trié
     // 3) éviter de faire du travail en trop
     for (int i=0 ; i<n ; i++){
-        for (int j=0 ; j<n ; j++){
+        for (int j=0 ; j<n-i ; j++){
             // vr:----------
             // vr: à l'étape i=1 tu sais que l'élément n-1 est déjà le plus grand : donc inutile de re-tester n-1
             // vr:   (généralise avec i)
             if (tab[i]<tab[j]){
-                int a=tab[i];
                 // vr:----------
                 // vr: pas besoin de 2 variables intermédiaires : une seule suffit
                 int b=tab[j];
-                tab[j]=a;
-                tab[i]=b;; // vr: second ; inutile
+                tab[j]=tab[i];
+                tab[i]=b; // vr: second ; inutile
             }
         }
     }
@@ -47,7 +46,7 @@ void insertiom_sort(int tab[], int n)
     // on généralise ...
 
     for (int i=0 ; i<n ; i++){
-        int m = tab[i];
+        int min = i;
         for (int j=i ; j<n ; j++){
             // vr:----------
             // vr: je me suis mal expliquée
@@ -56,17 +55,15 @@ void insertiom_sort(int tab[], int n)
             //    - c'est quand tu es sortie du for (de celui-là) que tu échanges l'élément de position 0 avec l'élément
             //      à l'indice du min (tu généralises)
             //       
-            if (tab[j]<m){
+            if (tab[j]<tab[min]){
                 // vr:----------
                 // vr:  ton algo fonctionne mais il fait des échanges inutiles
                 //      et ce n'est pas le tri par insertion... à revoir
-                int a=m; 
-                int b=tab[j];
-                tab[j]=a; 
-                m=b;
-
+                min=j; 
             }
-        tab[i]=m; 
+        int b=tab[i];
+        tab[i]=tab[min]; 
+        tab[min]=b; 
         }
     }
 }
