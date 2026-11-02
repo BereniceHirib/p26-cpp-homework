@@ -1,5 +1,8 @@
 #include <iostream>
 
+// vr:----------
+// vr: je mets des commentaires (précédés par vr:---) dans ton code 
+
 // Nous allons implémenter une pile d'entiers de manière très basique.
 // Nous la complexifierons par la suite.
 
@@ -22,6 +25,9 @@
 
 // Voici les entêtes des fonctions où vous devez passer les arguments :
 
+// vr:----------
+// vr: prends des noms plus parlants pour tes arguments stack et top (ou nb)
+
 void print(int p[], int t)
 // cette fonction affiche les entiers empilés
 // elle a besoin de la pile et du nombre d'éléments empilés
@@ -42,6 +48,10 @@ bool is_empty(int p[], int t)
     else {
         return false;
     }
+// vr:----------
+// vr: c'est juste mais tu peux aussi faire
+//  return t==0;
+// vr: qui est plus facile à optimiser pour le compilateur
 }
 
 // renvoie true si la pile est pleine, false sinon
@@ -53,8 +63,12 @@ bool is_full(int p[], int t, int s)
     else {
         return false;
     }
+// vr:----------
+// vr: idem return t == s;
 }
 
+// vr----------
+// vr: très bien la référence
 void push(int p[], int& t, int s, int e) // e est l'élément à empiler
 // cette fonction ajoute un entier à la pile passé en argument
 // elle vérifie que la pile n'est pas pleine avant d'empiler
