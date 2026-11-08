@@ -170,6 +170,13 @@ struct Node
       affiche((*root).gauche, prof+1) ;
    }
 
+   static void liberer(Node* root) {
+      if (root == nullptr) return;    
+      liberer((*root).gauche);          
+      liberer((*root).droite);         
+      delete root;                     
+   }
+
 };
 
 struct BinaryTree
@@ -195,6 +202,10 @@ struct BinaryTree
    // ah celle là est plus difficile...
    void print() {
       Node :: affiche(root,0);
+   }
+
+   ~ BinaryTree(){
+      Node :: liberer(root) ;
    }
 };
 
