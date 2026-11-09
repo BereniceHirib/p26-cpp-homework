@@ -70,7 +70,7 @@
 // je vous donne un exemple où on l'utilise sur des int
 
 #include <iostream>
-#include "intstack.cpp" //pour include votre intstack
+#include "intstack.h" //pour include votre intstack
 #include <stack>
 #include <cstring>
 
