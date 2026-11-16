@@ -1,3 +1,10 @@
+// Je mets mes commentaires dans ton code en les faisant précéder par vr:
+
+// vr: Je pense que tu as trop utilisé d'IA générative pour écrire ce code
+// Dans ce module c++, je demande de réfléchir à la manière que tu aurais de construire ce code.
+// Si tu génères les exercices trop rapidement, tu ne vas pas comprendre
+// pourquoi on recourt à certaines constructions et manières de faire.
+
 /*
 
 Ne surtout pas poser la question à l'IA : elle vous donne tout de suite le code !
@@ -110,25 +117,33 @@ les méthodes de BinarySearchTree sont juste là pour appeler "correctement" les
 
 #include <iostream>
 
+
 struct Node
 {
     // votre code là avec des attributs et des méthodes...
-   int n;
-   Node* gauche;
+
+   int n;  // vr: mettre un nom  plus parlant genre value ?
+   Node* gauche; // vr: rester en anglais Node -> left, right
+                 //     ou tout passer en français Noeud, gauche, droite
    Node* droite;
 
-   Node(int e){
-      n = e;
-      gauche = nullptr ; 
-      droite = nullptr ;
+   Node(int e, Node* gauche = nullptr, Node* droite = nullptr) : n(e), gauche(gauche), droite(droite) {
+      // vr: utiliser les arguments par défaut et la liste d'initialisation
+      // n = e;
+      // gauche = nullptr ; 
+      // droite = nullptr ;
    }
 
+   // vr: pourquoi static ?
    static Node* insertnode(Node* root, int e){
       if (root==nullptr){
          return new Node(e);
       }
-      else if ((*root).n>e){
-         (*root).gauche = insertnode((*root).gauche,e);
+      // else if ((*root).n>e){
+      else if (root->n > e){ // vr: utiliser "->"" plus lisible et qui est fait pour cela
+         // (*root).gauche = insertnode((*root).gauche,e);
+         // vr: idem partout
+         root->gauche = insertnode(root->gauche,e);
       }
       else if ((*root).n<e){
          (*root).droite = insertnode((*root).droite,e);
@@ -136,15 +151,17 @@ struct Node
       return root;
    }
 
+   // vr: pourquoi static ?
    static void parc_prof(Node* root){
       if (root==nullptr){
          return;
       }
       parc_prof((*root).gauche) ;
-      std::cout << (*root).n << "";
+      std::cout << (*root).n << ""; // vr: pourquoi "" ?
       parc_prof((*root).droite) ;
    }
    
+   // vr: pourquoi static ?
    static bool recherche(Node* root,int e){
       if (root==nullptr){
          return false;
@@ -158,6 +175,7 @@ struct Node
       return recherche((*root).droite,e);
    }
 
+   // vr: pourquoi static ?
    static void affiche(Node* root, int prof){
       if (root==nullptr){
          return;
@@ -170,6 +188,7 @@ struct Node
       affiche((*root).gauche, prof+1) ;
    }
 
+   // vr: pourquoi static ?
    static void liberer(Node* root) {
       if (root == nullptr) return;    
       liberer((*root).gauche);          
@@ -217,7 +236,7 @@ int main()
    for (int e : {4, 2, 6, 1, 3, 5, 7})
    {
       std::cout << "j'insère " << e << std::endl;
-      b.insert(e);
+      b.insert(e);// vr: utiliser le raccourci -> (qui est fait pour cela)
    }
    std::cout << std::boolalpha // pour avoir true ou false
              << "12 est-t-il dans l'arbre ? " << b.search(12) << std::endl
